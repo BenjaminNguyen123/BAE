@@ -7,20 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <!-- Slide 1: Initial Date Invitation -->
 <div class="container active" id="slide1">
     <h1>Would you like to go out with me for a date?</h1>
     <button onclick="showIntermediateSlide()">Yes ❤️</button>
-    <button>No 😢</button>
+    <button onclick="showNoSlide()">No 😢</button>
 </div>
 
 <!-- Slide 2: Intermediate Slide -->
 <div class="container" id="slide2">
     <h1>YEAYYY!!! DON'T GO ANYWHERE</h1>
     <img src="https://i.giphy.com/mUYtAsf6G3i4wQDDCC.webp" alt="Excited GIF" style="width: 250px; margin: 50px auto; display: block;">
+    
     <button onclick="showDateSlide()">(づ｡◕‿‿◕｡)づ CLICK ME</button>
+    <button class="back-button" onclick="goBack('slide1')">Back</button> <!-- Back button -->
 </div>
+
 
 <!-- Slide 3: Date and Time Picker -->
 <div class="container" id="slide3">
@@ -28,7 +30,7 @@
     <input type="date" id="dateInput">
     <input type="time" id="timeInput">
     <button onclick="confirmDate()">( づ｡◕‿‿◕｡)づ CLICK ME</button>
-    <p id="response3"></p>
+    <button class="back-button" onclick="goBack('slide2')">Back</button> <!-- Back button -->
 </div>
 
 <!-- Slide 4: What Do You Want to Do? -->
@@ -41,13 +43,13 @@
         Go Out to Eat 🍽️
     </div>
     <button onclick="continueActivity()">Continue</button>
+    <button class="back-button" onclick="goBack('slide3')">Back</button> <!-- Back button -->
 </div>
 
 <!-- Slide 5: Netflix and Chill Options -->
 <div class="container" id="netflixOptionSlide">
     <h1>What do you want to watch?</h1>
     <div class="options-grid">
-        <!-- Netflix options go here -->
         <div class="option" id="option1" onclick="selectNetflixOption(1)">
             <img src="https://static2.vieon.vn/vieplay-image/poster_v4/2022/06/07/t0z9ceyq_660x946-2n1d.jpg" alt="Option 1">
             <p>2 ngày 1 đêm</p>
@@ -70,13 +72,13 @@
         </div>
     </div>
     <button id="continueNetflix" onclick="continueNetflix()">Continue</button>
+    <button class="back-button" onclick="goBack('activitySlide')">Back</button> <!-- Back button -->
 </div>
 
 <!-- Slide 6: Food Menu -->
 <div class="container" id="foodMenuSlide">
     <h1>Where do you want to eat?</h1>
     <div class="options-grid">
-        <!-- Food options go here -->
         <div class="option" id="food1" onclick="selectOption(1)">
             <img src="https://images.squarespace-cdn.com/content/v1/66b58b55b251b639d5c85f1e/fcd81e90-4651-4359-98a8-c37afbb2be4c/best+asian+food+in+lone+mountain+centennial+hills+in+las+vegas+north+summerline+3.png" alt="Korean BBQ">
             <p>Korean BBQ</p>
@@ -95,16 +97,14 @@
         </div>
     </div>
     <button id="continueFood" onclick="continueSelection()">Continue</button>
+    <button class="back-button" onclick="goBack('activitySlide')">Back</button> <!-- Back button -->
 </div>
 
 <!-- Slide 7: Rating Slide -->
-<div class="container" id="ratingSlide" style="text-align: center;">
-    <h1 style="font-family: 'Arial', sans-serif; font-weight: bold; color: #ff6b6b;">
-        🥺💖
-    </h1>
-    <img src="https://i.pinimg.com/originals/ce/6f/64/ce6f64ad7e871ffd97d75e8153136f6c.gif" alt="Cute Cat" style="width: 150px; margin: 20px auto; display: block;">
+<div class="container" id="ratingSlide">
+    <h1>🥺💖</h1>
+    <img src="https://i.pinimg.com/originals/ce/6f/64/ce6f64ad7e871ffd97d75e8153136f6c.gif" alt="Cute Cat" style="width: 150px; margin: 20px auto;">
     
-    <!-- Rating Slider with Colorful Gradient -->
     <div class="rating-container" style="margin: 40px 0;">
         <p style="font-family: 'Arial', sans-serif; font-size: 24px; color: #ff6b6b;">
             Rate how excited are you
@@ -115,10 +115,15 @@
         </p>
     </div>
 
-    <button style="padding: 15px 30px; font-size: 18px; font-family: 'Arial', sans-serif; background-color: #ff6b6b; 
-        border-radius: 10px; border: none; color: white; cursor: pointer;" onclick="submitRating()">
-        Continue c(＾＿＾)っ
-    </button>
+    <button onclick="submitRating()">Continue</button>
+    <button class="back-button" onclick="goBack('netflixOptionSlide')">Back</button> <!-- Back button -->
+</div>
+
+<!-- Slide 8: No Option Slide -->
+<div class="container" id="noSlide">
+    <h1>OOPS! Maybe next time 😢</h1>
+    <img src="https://media.giphy.com/media/12XDYvMJNcmLgQ/giphy.gif" alt="Oops GIF" style="width: 250px;">
+    <button class="back-button" onclick="goBack('slide1')">Back</button> <!-- Back button -->
 </div>
 
 <!-- Final Slide -->
@@ -130,5 +135,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="scripts.js"></script>
+
 </body>
 </html>
